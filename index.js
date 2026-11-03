@@ -24,17 +24,26 @@ function addCheckBoxes(li){
 
 function addTask(){
     let content = $("#task").val()
-    if (content === ""){
-        alert("Type in a task to add")
+    let dueDate = $("#due-date").val()
+    
+    if (content === "" || dueDate === ""){
+        alert("Fill all fields to add a task")
     }
     else {
         let li = document.createElement("li")
         li.textContent = content;
+
+        let span = document.createElement("span")
+        span.textContent = "Due date: " + dueDate
+    
+        li.append(span)
+
         addCheckBoxes(li)
         let list = $("#list")
         list.append(li)
 
         $("#task").val("")
+        $("#due-date").val("")
     }
 }
 

@@ -13,6 +13,11 @@ input{
     margin: 5px;
 }
 
+.add.section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .add.task{
     width: fit-content;
@@ -22,7 +27,7 @@ input{
     align-items: center;
 
 }
-.add.task > span {
+.add.task > p {
     background-color: rgb(255, 110, 207);
     display: flex;
     justify-content: space-between;
@@ -40,6 +45,12 @@ input{
     height: fit-content;
     margin-left: auto;
     margin-right: auto;
+}
+
+#list > li > span {
+    color: blue;
+    font-size: .75rem;
+    margin-left: 10px;
 }
 
 li {
