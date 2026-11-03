@@ -34,7 +34,14 @@ function addTask(){
         li.textContent = content;
 
         let span = document.createElement("span")
-        span.textContent = "Due date: " + dueDate
+
+        if (dueDate === ""){
+            span.textContent = dueDate
+        }
+        else {
+            span.textContent = "Due date: " + dueDate
+        }
+        
     
         li.append(span)
 

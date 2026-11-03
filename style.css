@@ -68,7 +68,7 @@ ul {
 }
 
 #list > li > span {
-    color: blue;
+    color: rgb(255, 109, 109);
     font-size: .75rem;
     margin-left: 10px;
 }
