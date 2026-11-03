@@ -26,8 +26,8 @@ function addTask(){
     let content = $("#task").val()
     let dueDate = $("#due-date").val()
     
-    if (content === "" || dueDate === ""){
-        alert("Fill all fields to add a task")
+    if (content === ""){
+        alert("Please add a title for the task")
     }
     else {
         let li = document.createElement("li")
@@ -49,3 +49,10 @@ function addTask(){
 
 let addButton = document.querySelector(".add.task")
 addButton.addEventListener("click", addTask);
+
+let clearButton = document.querySelector(".clear")
+clearButton.addEventListener("click", function() {
+    console.log("Clear list!")
+    list = document.querySelector("#list")
+    list.textContent = ""
+});
