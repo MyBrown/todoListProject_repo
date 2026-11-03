@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do List</title>
+
+    <link 
+        rel = "stylesheet"
+        href = "./style.css"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <h1>To-do List</h1>
+    <div>
+        <div class="add task">
+            <span><img class="plus sign" src="./assets/mono-svn-add.svg"/>Add Task</span>
+        </div>
+        <input id="task" placeholder="Task title..." type="text">
+
+        <div>
+            <ul id="list">
+                <li>Sweep floor</li>
+                <li>Mop kitchen</li>
+            </ul>
+        </div>
+    </div>
+    
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="./index.js" charset="utf-8"></script>
+</body>
+</html>

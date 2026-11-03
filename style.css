@@ -1,0 +1,51 @@
+html{
+    background-color: pink;
+    font-family: "Montserrat", "sans-serif";
+}
+
+h1{
+    font-size: 50px;
+    text-align: center;
+}
+
+input{
+    padding: 5px;
+    margin: 5px;
+}
+
+
+.add.task{
+    width: fit-content;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+
+}
+.add.task > span {
+    background-color: rgb(255, 110, 207);
+    display: flex;
+    justify-content: space-between;
+
+    padding: 5px;
+}
+
+.plus.sign{
+    width: 15px;
+}
+
+.list{
+    background-color: white;
+    width: 90%;
+    height: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+li {
+    list-style: none;
+}
+
+.complete {
+    text-decoration: line-through !important;
+}
