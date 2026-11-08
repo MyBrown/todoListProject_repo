@@ -24,6 +24,7 @@ input{
 .add.task{
     width: fit-content;
     height: 30px;
+    margin-left: 5px;
 
     display: flex;
     align-items: center;
@@ -43,7 +44,6 @@ input{
 
 .clear {
     background-color: rgb(255, 110, 207);
-    margin-left: 5px;
 }
 
 .clear > p {
@@ -67,7 +67,7 @@ ul {
 
 }
 
-#list > li > span {
+.due-date {
     color: rgb(255, 109, 109);
     font-size: .75rem;
     margin-left: 10px;
