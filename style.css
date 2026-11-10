@@ -71,10 +71,9 @@ h2 {
 }
 
 ul {
-    display: table;
     padding: 0px;
     margin: 0px;
-
+    list-style: none;
 }
 
 .due-date {
@@ -85,7 +84,7 @@ ul {
 
 li {
     list-style: none;
-    width: 539px;
+    width: 99.9;
     border-bottom: 1px solid rgb(255, 182, 231);
     padding: 2px;
 }
