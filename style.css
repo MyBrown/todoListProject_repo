@@ -42,14 +42,24 @@ input{
     width: 15px;
 }
 
+#list-body > div {
+    border: 1px solid rgb(255, 110, 207);
+}
+
+h2 {
+    text-align: center;
+    margin: 5px;
+}
+
 .clear {
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 1rem;
+    margin-left: 10px;
+    padding: 2px;
     background-color: rgb(255, 110, 207);
 }
 
-.clear > p {
-    padding: 6px;
-    margin: 0px;
-}
 
 #list-body {
     width: 62%;

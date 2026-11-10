@@ -19,9 +19,9 @@
     <h1>To-do List</h1>
     <div>
         <div class = "add section">
-            <div class="clear">
+            <!-- <div class="clear">
                 <p>Clear List</p>
-            </div>
+            </div> -->
             <input id="task" placeholder="Task title..." type="text">
             <input id="due-date" type="date">
             <div class="add task">
@@ -31,20 +31,20 @@
         </div>
         <div id="list-body">
             <div id="general">
-                <h2>No Date</h2>
+                <h2>No Date<span class="clear" id="general-clear">Clear</span></h2> 
                 <ul id="general-list">
                     
                 </ul>
             </div>
             <div class="today">
-                <h2>Today</h2>
+                <h2>Today<span class="clear" id="today-clear">Clear</span></h2>
                 <ul id="today-list">
                 </ul>
             </div>
             <div class="this-week">
-                <h2>This Week</h2>
+                <h2>This Week<span class="clear" id="week-clear">Clear</span></h2>
                 <ul id="week-list">
-                    
+
                 </ul>
             </div>
             <ul id="list">

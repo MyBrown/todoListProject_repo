@@ -179,12 +179,33 @@ function addTask(){
 let addButton = document.querySelector(".add.task")
 addButton.addEventListener("click", addTask);
 
-// clears the whole list with a push of the button
-let clearButton = document.querySelector(".clear")
-clearButton.addEventListener("click", function() {
-    console.log("Clear list!")
-    list = document.querySelector("#list")
-    list.textContent = ""
+// collects all of the clear buttons
+let clearButtons = document.querySelectorAll(".clear")
+// deletes the list according to which button is pushed
+clearButtons.forEach(function(button) {
+    button.addEventListener("click", function() {
+    
+        switch (button.id) {
+            case "general-clear":
+                clear($("#general-list"))
+                break;
 
-    localStorage.removeItem("listItems")
+            case "today-clear":
+                clear($("#today-list"))
+                break;
+
+            case "week-clear":
+                clear($("#week-list"))
+                break;
+
+            default:
+                break;
+        }
+    });
 });
+
+
+function clear(list){
+    list.empty()
+    saveList()
+}
