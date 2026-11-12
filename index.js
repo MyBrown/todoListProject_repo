@@ -12,8 +12,9 @@ $(document).ready(function() {
 function saveList() {
     // list of all the lists
     let lists = [
-        {name: "general-list", items: $("#general-list li")}, 
+        {name: "overdue-list", items: $("#overdue-list li")},
         {name : "today-list", items: $("#today-list li")}, 
+        {name: "tomorrow-list", items: $("#tomorrow-list li")},
         {name: "week-list", items: $("#week-list li")}
     ]
 
@@ -71,7 +72,7 @@ function loadList() {
         addCheckBoxes(li);
 
         if (task.completed) {
-                    li.classList.add("complete");
+            li.classList.add("complete");
         }
 
 
@@ -81,11 +82,14 @@ function loadList() {
 
         
         // adds task back to its original list
-        if (task.list === "general-list") {
-            $("#general-list").append(li);
+        if (task.list === "overdue-list") {
+            $("#overdue-list").append(li);
         }
         else if (task.list === "today-list") {
             $("#today-list").append(li);
+        }
+        else if (task.list === "tomorrow-list") {
+            $("#tomorrow-list").append(li);
         }
         else if (task.list === "week-list") {
             $("#week-list").append(li);
@@ -147,32 +151,39 @@ function addTask(){
 
     addCheckBoxes(li)
 
-    //checking the date so that the task goes to the right list
-    if (dueDate === ""){
-        $("#general-list").append(li)
-    }
-    else {
-        let today = new Date()
-        today.setHours(0,0,0,0)
-
-        let taskDate = new Date(dueDate + "T00:00:00")
-
-        if (taskDate.getTime() === today.getTime()) {
-            $("#today-list").append(li)
-        }
-        else if (taskDate > today) {
-            $("#week-list").append(li)
-        }
-        else {
-            $("#general-list").append(li)
-        }
-    }
+    checkingDate(li, dueDate)
 
     //resets the input boxes once the task is added
     $("#task").val("")
     $("#due-date").val("")
 
     saveList()
+}
+
+// a function for checking the due date of the list and adding it to the correct list
+function checkingDate(li, dueDate){
+    let today = new Date()
+    today.setHours(0,0,0,0)
+
+    let taskDate = new Date(dueDate + "T00:00:00")
+
+    console.log(dueDate)
+    // adds the task to the correct list based on 
+    if (taskDate.getTime() === today.getTime()) {
+        $("#today-list").append(li)
+    }
+    else if (taskDate.getTime() === today.setDate(today.getDate() + 1)){
+        $("#tomorrow-list").append(li)
+    }
+    else if (taskDate > today) {
+        $("#week-list").append(li)
+    }
+    else if (taskDate < today){
+        $("#overdue-list").append(li)
+    }
+    else {
+        $("#today-list").append(li)
+    }
 }
 
 // button for adding a task to 
@@ -186,12 +197,16 @@ clearButtons.forEach(function(button) {
     button.addEventListener("click", function() {
     
         switch (button.id) {
-            case "general-clear":
-                clear($("#general-list"))
+            case "overdue-clear":
+                clear($("#overdue-list"))
                 break;
 
             case "today-clear":
                 clear($("#today-list"))
+                break;
+
+            case "tomorrow-clear":
+                clear($("#tomorrow-list"))
                 break;
 
             case "week-clear":

@@ -56,15 +56,19 @@ h2 {
     font-weight: 400;
     font-size: 1rem;
     margin-left: 10px;
-    padding: 2px;
+    padding: 3px;
     background-color: rgb(255, 110, 207);
+    border-radius: 15%;
 }
 
-
 #list-body {
+    display: flex;
+
+}
+#list-body > div {
     width: 62%;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 5px;
+    margin-right: 5px;
     margin-top: 30px;    
     background-color: rgb(253, 252, 252);
     border: 3px solid rgb(255, 110, 207);
