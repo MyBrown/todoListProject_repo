@@ -96,3 +96,8 @@ li {
 .complete {
     text-decoration: line-through !important;
 }
+
+.delete {
+    float: right;
+    margin-right: 5px;
+}

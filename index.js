@@ -1,10 +1,6 @@
 // as soon as the website loads, the current list is loaded and formatted
 $(document).ready(function() {
     loadList()
-    
-    for (let i = 0; i < listItems.length; i++) {
-        addCheckBoxes(listItems[i])
-    }
 });
 
 
@@ -44,7 +40,6 @@ function saveList() {
 }
 
 
-
 // a function for loading the current list when the website has loaded
 function loadList() {
 
@@ -70,6 +65,7 @@ function loadList() {
         li.append(dueDate);
 
         addCheckBoxes(li);
+        deleteTask(li)
 
         if (task.completed) {
             li.classList.add("complete");
@@ -125,6 +121,23 @@ function addCheckBoxes(li){
     
 }
 
+// a function for adding x's to the task so the user can remove individual items
+function deleteTask(li){
+    let xSpan = document.createElement("span")
+    let ex = document.createTextNode("x")
+    xSpan.classList.add("delete")
+    xSpan.appendChild(ex)
+
+    li.append(xSpan)
+
+    xSpan.addEventListener("click", function(){
+        li.remove()
+        saveList()
+    });
+
+    
+}
+
 // a function for adding a new task to the list and displaying the due date
 function addTask(){
     let content = $("#task").val()
@@ -150,7 +163,7 @@ function addTask(){
     li.append(span);
 
     addCheckBoxes(li)
-
+    deleteTask(li)
     checkingDate(li, dueDate)
 
     //resets the input boxes once the task is added
