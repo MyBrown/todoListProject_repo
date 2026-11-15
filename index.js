@@ -114,7 +114,6 @@ function addCheckBoxes(li){
             li.classList.remove("complete")
         }
 
-        // saves the list with each additional task
         saveList()
     });
 
@@ -134,8 +133,6 @@ function deleteTask(li){
         li.remove()
         saveList()
     });
-
-    
 }
 
 // a function for adding a new task to the list and displaying the due date
