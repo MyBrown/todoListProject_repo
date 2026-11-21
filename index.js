@@ -78,18 +78,7 @@ function loadList() {
 
         
         // adds task back to its original list
-        if (task.list === "overdue-list") {
-            $("#overdue-list").append(li);
-        }
-        else if (task.list === "today-list") {
-            $("#today-list").append(li);
-        }
-        else if (task.list === "tomorrow-list") {
-            $("#tomorrow-list").append(li);
-        }
-        else if (task.list === "week-list") {
-            $("#week-list").append(li);
-        }
+        checkingDate(li, task.dueDate)
     });   
 }
 
@@ -177,9 +166,15 @@ function checkingDate(li, dueDate){
 
     let taskDate = new Date(dueDate + "T00:00:00")
 
-    console.log(dueDate)
+    let tomorrow = new Date(today)
+    tomorrow.setDate(tomorrow.getDate() + 1)
+
     // adds the task to the correct list based on 
-    if (taskDate.getTime() === today.getTime()) {
+    if (!dueDate){
+        $("#today-list").append(li)
+        return
+    }
+    else if (taskDate.getTime() === today.getTime()) {
         $("#today-list").append(li)
     }
     else if (taskDate.getTime() === today.setDate(today.getDate() + 1)){
@@ -190,9 +185,6 @@ function checkingDate(li, dueDate){
     }
     else if (taskDate < today){
         $("#overdue-list").append(li)
-    }
-    else {
-        $("#today-list").append(li)
     }
 }
 
