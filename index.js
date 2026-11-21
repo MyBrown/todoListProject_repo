@@ -39,7 +39,6 @@ function saveList() {
     localStorage.setItem("lists", JSON.stringify(tasks));
 }
 
-
 // a function for loading the current list when the website has loaded
 function loadList() {
 
@@ -81,8 +80,6 @@ function loadList() {
         checkingDate(li, task.dueDate)
     });   
 }
-
-
 
 // a function to add check boxes in front of each task
 function addCheckBoxes(li){
@@ -226,3 +223,14 @@ function clear(list){
     list.empty()
     saveList()
 }
+
+//checks and/or changes the tasks every minute
+setInterval(function() {
+    $("#overdue-list li, #today-list li, #tomorrow-list li, #week-list li").each(function() {
+        let li = this
+        let dueDate = li.querySelector(".due-date").dataset.date
+        checkingDate($(li).detach(), dueDate)
+    });
+
+    saveList()
+}, 60000);
