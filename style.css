@@ -63,10 +63,10 @@ h2 {
 
 #list-body {
     display: flex;
-
 }
 #list-body > div {
     width: 62%;
+    height: min-content;
     margin-left: 5px;
     margin-right: 5px;
     margin-top: 30px;    

@@ -11,7 +11,8 @@ function saveList() {
         {name: "overdue-list", items: $("#overdue-list li")},
         {name : "today-list", items: $("#today-list li")}, 
         {name: "tomorrow-list", items: $("#tomorrow-list li")},
-        {name: "week-list", items: $("#week-list li")}
+        {name: "week-list", items: $("#week-list li")},
+        {name: "future-list", items: $("#future-list li")}
     ]
 
     // a new list that will hold all of our information
@@ -166,6 +167,12 @@ function checkingDate(li, dueDate){
     let tomorrow = new Date(today)
     tomorrow.setDate(tomorrow.getDate() + 1)
 
+    let startOfWeek = new Date(today)
+    startOfWeek.setDate(today.getDate() - today.getDay())
+
+    let endOfWeek = new Date(startOfWeek)
+    endOfWeek.setDate(startOfWeek.getDate() + 6)
+
     // adds the task to the correct list based on 
     if (!dueDate){
         $("#today-list").append(li)
@@ -174,14 +181,17 @@ function checkingDate(li, dueDate){
     else if (taskDate.getTime() === today.getTime()) {
         $("#today-list").append(li)
     }
-    else if (taskDate.getTime() === today.setDate(today.getDate() + 1)){
+    else if (taskDate.getTime() === tomorrow.getTime()){
         $("#tomorrow-list").append(li)
     }
-    else if (taskDate > today) {
+    else if (taskDate > tomorrow && taskDate <= endOfWeek) {
         $("#week-list").append(li)
     }
     else if (taskDate < today){
         $("#overdue-list").append(li)
+    }
+    else if (taskDate > endOfWeek){
+        $("#future-list").append(li)
     }
 }
 
@@ -212,6 +222,10 @@ clearButtons.forEach(function(button) {
                 clear($("#week-list"))
                 break;
 
+            case "future-clear":
+                clear($("#future-list"))
+                break;
+
             default:
                 break;
         }
@@ -226,7 +240,7 @@ function clear(list){
 
 //checks and/or changes the tasks every minute
 setInterval(function() {
-    $("#overdue-list li, #today-list li, #tomorrow-list li, #week-list li").each(function() {
+    $("#overdue-list li, #today-list li, #tomorrow-list li, #week-list li, #future-list li").each(function() {
         let li = this
         let dueDate = li.querySelector(".due-date").dataset.date
         checkingDate($(li).detach(), dueDate)
